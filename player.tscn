@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://q3cbcgja4y0b"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_6015e"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_r0ucw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olcfv"]
+size = Vector2(20, 51)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_6015e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 15.5)
+scale = Vector2(20, 51)
+texture = SubResource("CanvasTexture_r0ucw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15.5)
+shape = SubResource("RectangleShape2D_olcfv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.67, 2.67)
+limit_left = 0
+limit_top = 0
+limit_right = 1155
+limit_bottom = 650
