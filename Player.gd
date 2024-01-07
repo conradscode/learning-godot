@@ -22,4 +22,4 @@ func _process(delta):
 		velocity = velocity.normalized() * PLAYER_SPEED
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-	pass
+	move_and_slide()
