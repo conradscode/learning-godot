@@ -6,6 +6,7 @@ var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	set_motion_mode(MOTION_MODE_FLOATING)
 
 func _process(delta):
 	var velocity = Vector2.ZERO

@@ -6,6 +6,12 @@
 script = ExtResource("1_xxlln")
 metadata/_edit_lock_ = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.7996, 16.1997)
+color = Color(0.298039, 0.603922, 0.286275, 1)
+
 [node name="Play" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
