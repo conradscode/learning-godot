@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://krmwluq616wc"]
+[gd_scene load_steps=9 format=3 uid="uid://krmwluq616wc"]
 
 [ext_resource type="Texture2D" uid="uid://0ak1ob8vs02h" path="res://Tilesets/TilesetField.png" id="1_2ko2p"]
 [ext_resource type="PackedScene" uid="uid://q3cbcgja4y0b" path="res://player.tscn" id="1_quukr"]
 [ext_resource type="Texture2D" uid="uid://dwn5ok457fpbl" path="res://Tilesets/TilesetVillageAbandoned.png" id="2_svqfy"]
 [ext_resource type="PackedScene" uid="uid://0krfk2e6ar3t" path="res://tower.tscn" id="3_7q38l"]
+[ext_resource type="PackedScene" uid="uid://c173dng4fjyoi" path="res://spider.tscn" id="5_ev3a0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxhgv"]
 texture = ExtResource("1_2ko2p")
@@ -348,6 +349,14 @@ position = Vector2(684, 360)
 
 [node name="Tower3" parent="Towers" instance=ExtResource("3_7q38l")]
 position = Vector2(659, 483)
+
+[node name="Spiders" type="Node2D" parent="."]
+
+[node name="Spider" parent="Spiders" instance=ExtResource("5_ev3a0")]
+position = Vector2(436, 528)
+
+[node name="Spider2" parent="Spiders" instance=ExtResource("5_ev3a0")]
+position = Vector2(592, 340)
 
 [node name="Player" type="Node2D" parent="."]
 
