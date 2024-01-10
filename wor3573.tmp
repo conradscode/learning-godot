@@ -1,13 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://krmwluq616wc"]
+[gd_scene load_steps=9 format=3 uid="uid://krmwluq616wc"]
 
 [ext_resource type="Texture2D" uid="uid://0ak1ob8vs02h" path="res://Tilesets/TilesetField.png" id="1_2ko2p"]
 [ext_resource type="PackedScene" uid="uid://q3cbcgja4y0b" path="res://player.tscn" id="1_quukr"]
-[ext_resource type="Script" path="res://world.gd" id="1_retwv"]
 [ext_resource type="Texture2D" uid="uid://dwn5ok457fpbl" path="res://Tilesets/TilesetVillageAbandoned.png" id="2_svqfy"]
 [ext_resource type="PackedScene" uid="uid://0krfk2e6ar3t" path="res://tower.tscn" id="3_7q38l"]
 [ext_resource type="PackedScene" uid="uid://c173dng4fjyoi" path="res://spider.tscn" id="5_ev3a0"]
-[ext_resource type="Script" path="res://spiders.gd" id="5_p3r72"]
-[ext_resource type="Script" path="res://hud.gd" id="6_krayu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxhgv"]
 texture = ExtResource("1_2ko2p")
@@ -334,7 +331,6 @@ sources/0 = SubResource("TileSetAtlasSource_lxhgv")
 sources/1 = SubResource("TileSetAtlasSource_m4img")
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_retwv")
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -355,40 +351,14 @@ position = Vector2(684, 360)
 position = Vector2(659, 483)
 
 [node name="Spiders" type="Node2D" parent="."]
-script = ExtResource("5_p3r72")
 
-[node name="Spider" parent="Spiders" instance=ExtResource("5_ev3a0")]
-position = Vector2(436, 528)
+[node name="Player" type="Node2D" parent="."]
 
-[node name="Spider2" parent="Spiders" instance=ExtResource("5_ev3a0")]
-position = Vector2(592, 340)
-
-[node name="Player" parent="." instance=ExtResource("1_quukr")]
+[node name="Player" parent="Player" instance=ExtResource("1_quukr")]
 position = Vector2(597, 464)
 
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("6_krayu")
+[node name="Spider" parent="." instance=ExtResource("5_ev3a0")]
+position = Vector2(436, 528)
 
-[node name="Health" type="Label" parent="HUD"]
-offset_left = 8.0
-offset_top = -2.0
-offset_right = 132.0
-offset_bottom = 30.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 23
-text = "Health:"
-
-[node name="TowersDestroyed" type="Label" parent="HUD"]
-offset_left = 9.0
-offset_top = 30.0
-offset_right = 233.0
-offset_bottom = 62.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 23
-text = "Towers Destroyed:"
-
-[connection signal="child_exiting_tree" from="Towers" to="." method="_on_towers_child_exiting_tree"]
+[node name="Spider2" parent="." instance=ExtResource("5_ev3a0")]
+position = Vector2(592, 340)

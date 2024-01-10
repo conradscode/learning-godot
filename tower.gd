@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+signal tower_destroyed
+
 var tower_health = 10
 
 func _on_break_tower_pressed():

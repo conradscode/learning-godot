@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://c173dng4fjyoi"]
+
+[ext_resource type="Script" path="res://spider.gd" id="1_7rdtk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4y21y"]
+size = Vector2(24.1589, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghm4b"]
+radius = 92.6175
+
+[node name="Spider" type="CharacterBody2D"]
+scale = Vector2(0.993421, 1)
+script = ExtResource("1_7rdtk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12.0795, 12)
+scale = Vector2(0.962844, 0.976419)
+shape = SubResource("RectangleShape2D_4y21y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.603681, 0.599735)
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="PlayerChase" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerChase"]
+position = Vector2(12.0795, 16)
+shape = SubResource("CircleShape2D_ghm4b")
+
+[node name="PlayerCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
+position = Vector2(12.0795, 12)
+shape = SubResource("RectangleShape2D_4y21y")
+
+[connection signal="body_entered" from="PlayerChase" to="." method="_on_player_chase_body_entered"]
+[connection signal="body_exited" from="PlayerChase" to="." method="_on_player_chase_body_exited"]
+[connection signal="body_entered" from="PlayerCollision" to="." method="_on_player_collision_body_entered"]
