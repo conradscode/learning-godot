@@ -1,20 +1,40 @@
 extends Node2D
 
-var towers_destroyed = 0
-var player_health = 100
+var towers_destroyed
+var player_health
+var total_towers
 
 func _ready():
-	$HUD.update_player_health(player_health)
-	$HUD.update_towers_destroyed(towers_destroyed)
-	
-func _process(delta):
-	pass
-
-
-func _on_towers_child_exiting_tree(node):
-	towers_destroyed += 1
-	$HUD.update_towers_destroyed(towers_destroyed)
+	set_player_statistics()	
 		
-func _on_spider_player_hit():
-	player_health -= 25
+func _on_towers_tower_destroyed():
+	update_towers_destroyed()
+	if (towers_destroyed == total_towers):
+		show_game_over_screen("CONGRATS! You destroyed all the towers.")
+	
+func _on_spiders_player_hit():
+	update_player_health(-25)
+	if (player_health <= 0):
+		show_game_over_screen("LOSER! You died.")		
+	
+func set_player_statistics():
+	total_towers = $Towers.get_child_count(false)	
+	towers_destroyed = 0
+	$HUD.update_towers_destroyed(towers_destroyed, total_towers)
+	
+	player_health = 100
+	$HUD.update_player_health(player_health)
+	
+func update_player_health(amount):
+	player_health += amount
 	$HUD.update_player_health(player_health)	
+	
+func update_towers_destroyed():
+	towers_destroyed += 1
+	$HUD.update_towers_destroyed(towers_destroyed, total_towers)
+
+func show_game_over_screen(label_text):
+	var next_scene = preload("res://message_screen.tscn").instantiate()
+	next_scene.get_node("Outcome").text = (label_text)
+	get_tree().get_root().add_child(next_scene)
+	queue_free()

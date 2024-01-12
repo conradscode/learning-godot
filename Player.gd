@@ -21,6 +21,15 @@ func _physics_process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * PLAYER_SPEED
+	else:
+		$AnimatedSprite2D.play("idle")
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	if velocity.x != 0:
+		$AnimatedSprite2D.play("walk_side")
+		$AnimatedSprite2D.flip_v = false
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	if velocity.y != 0:
+		var animation = "walk_up" if velocity.y < 0 else "walk_down"
+		$AnimatedSprite2D.play(animation)
 	move_and_slide()
