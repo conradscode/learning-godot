@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://0krfk2e6ar3t"]
+
+[ext_resource type="Script" path="res://Towers/tower.gd" id="1_01lxe"]
+[ext_resource type="Texture2D" uid="uid://dwn5ok457fpbl" path="res://Textures/TilesetVillageAbandoned.png" id="1_imubv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qohwo"]
+size = Vector2(48, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahkgn"]
+radius = 56.5977
+
+[node name="Tower" type="StaticBody2D"]
+script = ExtResource("1_01lxe")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(24, 40)
+texture = ExtResource("1_imubv")
+region_enabled = true
+region_rect = Rect2(224, 0, 48, 80)
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(24, 40)
+shape = SubResource("RectangleShape2D_qohwo")
+
+[node name="BreakTower" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 48.0
+offset_bottom = 80.0
+
+[node name="PlayerInteraction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteraction"]
+position = Vector2(24, 40)
+scale = Vector2(0.848091, 1.13561)
+shape = SubResource("CircleShape2D_ahkgn")
+
+[connection signal="pressed" from="BreakTower" to="." method="_on_break_tower_pressed"]
+[connection signal="body_entered" from="PlayerInteraction" to="." method="_on_player_interaction_body_entered"]
+[connection signal="body_exited" from="PlayerInteraction" to="." method="_on_player_interaction_body_exited"]
