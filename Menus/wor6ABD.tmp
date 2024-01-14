@@ -455,13 +455,6 @@ position = Vector2(207, 182)
 [node name="Enemy24" parent="Enemies" instance=ExtResource("6_65nse")]
 position = Vector2(119, 288)
 
-[node name="Collectibles" type="Node2D" parent="."]
-script = ExtResource("9_026as")
-
-[node name="SpawnTimer" type="Timer" parent="Collectibles"]
-wait_time = 0.25
-autostart = true
-
 [node name="Player" parent="." instance=ExtResource("1_quukr")]
 position = Vector2(597, 464)
 
@@ -490,8 +483,14 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 23
 text = "Towers Destroyed:"
 
+[node name="Collectibles" type="Node2D" parent="."]
+script = ExtResource("9_026as")
+
+[node name="SpawnTimer" type="Timer" parent="Collectibles"]
+wait_time = 3.0
+autostart = true
+
 [connection signal="child_exiting_tree" from="Towers" to="." method="_on_towers_child_exiting_tree"]
 [connection signal="tower_destroyed" from="Towers" to="." method="_on_towers_tower_destroyed"]
 [connection signal="player_hit" from="Enemies" to="." method="_on_spiders_player_hit"]
-[connection signal="player_ate" from="Collectibles" to="." method="_on_collectibles_player_ate"]
 [connection signal="timeout" from="Collectibles/SpawnTimer" to="Collectibles" method="_on_spawn_timer_timeout"]

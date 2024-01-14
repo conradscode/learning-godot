@@ -6,7 +6,7 @@ const PLAYER_PATH = "../../Player"
 
 var chase_player = false
 var player
-var animation = "idle"
+var animation
 
 const ENEMY_SPEED = 40
 
@@ -22,6 +22,7 @@ func _physics_process(delta):
 			animation = "walk_left" if velocity.x < 0 else "walk_right"
 			$AnimatedSprite2D.play(animation)
 	else:
+		$AnimatedSprite2D.play("idle")
 		set_velocity(Vector2(0,0))
 	move_and_slide()
 	
