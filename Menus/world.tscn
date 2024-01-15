@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://krmwluq616wc"]
+[gd_scene load_steps=12 format=3 uid="uid://krmwluq616wc"]
 
 [ext_resource type="PackedScene" uid="uid://q3cbcgja4y0b" path="res://Player/player.tscn" id="1_quukr"]
 [ext_resource type="Script" path="res://Menus/world.gd" id="1_retwv"]
 [ext_resource type="Texture2D" uid="uid://dwn5ok457fpbl" path="res://Textures/TilesetVillageAbandoned.png" id="2_svqfy"]
-[ext_resource type="PackedScene" uid="uid://0krfk2e6ar3t" path="res://Towers/tower.tscn" id="3_7q38l"]
 [ext_resource type="Script" path="res://Towers/towers.gd" id="4_7n0ch"]
 [ext_resource type="Script" path="res://Enemies/enemies.gd" id="5_p3r72"]
-[ext_resource type="PackedScene" uid="uid://c173dng4fjyoi" path="res://Enemies/enemy.tscn" id="6_65nse"]
 [ext_resource type="Script" path="res://Menus/hud.gd" id="6_krayu"]
 [ext_resource type="Script" path="res://Collectibles/collectibles.gd" id="9_026as"]
 
@@ -350,116 +348,18 @@ layer_0/tile_data = PackedInt32Array(0, 196608, 6, 65536, 196608, 7, 1, 262144, 
 [node name="Towers" type="Node2D" parent="."]
 script = ExtResource("4_7n0ch")
 
-[node name="Tower" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(479, 384)
-
-[node name="Tower2" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(624, 208)
-
-[node name="Tower3" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(792, 215)
-
-[node name="Tower4" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(739, 565)
-
-[node name="Tower5" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(884, 389)
-
-[node name="Tower6" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(1052, 396)
-
-[node name="Tower7" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(24, 194)
-
-[node name="Tower8" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(169, 18)
-
-[node name="Tower9" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(337, 25)
-
-[node name="Tower10" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(220, 418)
-
-[node name="Tower11" parent="Towers" instance=ExtResource("3_7q38l")]
-position = Vector2(869, 57)
-
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("5_p3r72")
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(385, 304)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(472, 215)
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(552, 302)
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(464, 408)
-
-[node name="Enemy21" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(456, 552)
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(663, 152)
-
-[node name="Enemy6" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(750, 63)
-
-[node name="Enemy7" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(830, 150)
-
-[node name="Enemy8" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(742, 256)
-
-[node name="Enemy9" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(830, 423)
-
-[node name="Enemy10" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(917, 334)
-
-[node name="Enemy11" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(997, 421)
-
-[node name="Enemy12" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(909, 527)
-
-[node name="Enemy13" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(160, 455)
-
-[node name="Enemy14" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(247, 366)
-
-[node name="Enemy15" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(327, 453)
-
-[node name="Enemy16" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(239, 559)
-
-[node name="Enemy17" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(87, 125)
-
-[node name="Enemy18" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(286, 40)
-
-[node name="Enemy19" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(366, 127)
-
-[node name="Enemy20" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(278, 233)
-
-[node name="Enemy23" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(207, 182)
-
-[node name="Enemy24" parent="Enemies" instance=ExtResource("6_65nse")]
-position = Vector2(119, 288)
+[node name="SpawnTimer" type="Timer" parent="Enemies"]
+wait_time = 2.0
+autostart = true
 
 [node name="Collectibles" type="Node2D" parent="."]
 script = ExtResource("9_026as")
 
 [node name="SpawnTimer" type="Timer" parent="Collectibles"]
-wait_time = 0.25
+wait_time = 5.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("1_quukr")]
@@ -492,6 +392,7 @@ text = "Towers Destroyed:"
 
 [connection signal="child_exiting_tree" from="Towers" to="." method="_on_towers_child_exiting_tree"]
 [connection signal="tower_destroyed" from="Towers" to="." method="_on_towers_tower_destroyed"]
-[connection signal="player_hit" from="Enemies" to="." method="_on_spiders_player_hit"]
+[connection signal="player_hit" from="Enemies" to="." method="_on_enemies_player_hit"]
+[connection signal="timeout" from="Enemies/SpawnTimer" to="Enemies" method="_on_spawn_timer_timeout"]
 [connection signal="player_ate" from="Collectibles" to="." method="_on_collectibles_player_ate"]
 [connection signal="timeout" from="Collectibles/SpawnTimer" to="Collectibles" method="_on_spawn_timer_timeout"]

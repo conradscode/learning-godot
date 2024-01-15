@@ -2,14 +2,17 @@ extends CharacterBody2D
 
 signal player_hit
 
+const ENEMY_SPEED = 40
 const PLAYER_PATH = "../../Player"
 
 var chase_player = false
 var player
 var animation
 
-const ENEMY_SPEED = 40
 
+func _ready():
+	set_random_position()
+	
 func _physics_process(delta):
 	if (chase_player):
 		player = get_node(PLAYER_PATH)
@@ -38,3 +41,6 @@ func _on_player_collision_body_entered(body):
 	if (body.name == "Player"):
 		player_hit.emit()
 		queue_free()
+		
+func set_random_position():
+	self.position = Vector2(randi_range(20,1139), randi_range(16, 648))

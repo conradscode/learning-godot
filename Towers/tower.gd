@@ -5,6 +5,9 @@ signal tower_destroyed
 var tower_health = 10
 var player_within_range
 
+func _ready():
+	set_random_position()	
+		
 func _on_break_tower_pressed():
 	if player_within_range:
 		tower_health -= 1
@@ -19,7 +22,9 @@ func _on_player_interaction_body_entered(body):
 	if (body.name == "Player"):
 		player_within_range = true
 
-
 func _on_player_interaction_body_exited(body):
 	if (body.name == "Player"):
 		player_within_range = false
+		
+func set_random_position():
+	self.position = Vector2(randi_range(20,1000), randi_range(100, 550))

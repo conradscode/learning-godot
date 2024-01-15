@@ -1,12 +1,12 @@
 extends Node2D
 
 const MESSAGE_SCREEN_PATH = "res://Menus/message_screen.tscn"
+const PLAYER_MAX_HEALTH = 100
 
 var player_current_health = PLAYER_MAX_HEALTH
 var towers_destroyed = 0
 var total_towers
 
-const PLAYER_MAX_HEALTH = 100
 
 func _ready():
 	set_player_statistics()	
@@ -38,7 +38,7 @@ func _on_towers_tower_destroyed():
 	if (towers_destroyed == total_towers):
 		show_game_over_screen("CONGRATS! You destroyed all the towers.")
 	
-func _on_spiders_player_hit():
+func _on_enemies_player_hit():
 	update_player_health(-25)
 	if (player_current_health <= 0):
 		show_game_over_screen("LOSER! You died.")		

@@ -2,9 +2,14 @@ extends Node2D
 
 signal tower_destroyed
 
+const TOWER_SCENE = preload("res://Towers/tower.tscn")
+const MAX_TOWERS = 40
+
 func _ready():
-	for child in get_children():
-		child.tower_destroyed.connect(_on_tower_destroyed)
+	for n in MAX_TOWERS:
+		var tower = TOWER_SCENE.instantiate()
+		tower.tower_destroyed.connect(_on_tower_destroyed)
+		self.add_child(tower)
 		
 func _on_tower_destroyed():
 	tower_destroyed.emit()
