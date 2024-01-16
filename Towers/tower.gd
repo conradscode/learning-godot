@@ -4,9 +4,10 @@ signal tower_destroyed
 
 var tower_health = 10
 var player_within_range
+var is_colliding
 
 func _ready():
-	set_random_position()	
+	set_random_position()
 		
 func _on_break_tower_pressed():
 	if player_within_range:
@@ -16,7 +17,6 @@ func _on_break_tower_pressed():
 			var tween = get_tree().create_tween()
 			tween.tween_property(self, "modulate:a", 0, 0.5)		
 			tween.tween_callback(queue_free)
-
 
 func _on_player_interaction_body_entered(body):
 	if (body.name == "Player"):
@@ -28,3 +28,12 @@ func _on_player_interaction_body_exited(body):
 		
 func set_random_position():
 	self.position = Vector2(randi_range(20,1000), randi_range(100, 550))
+
+func _on_tower_collision_area_entered(area):
+	print(area.name)
+	if (area.name == "TowerCollision"):
+		is_colliding = true
+
+func _on_tower_collision_area_exited(area):
+	if (area.name == "TowerCollision"):
+		is_colliding = false

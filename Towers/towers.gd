@@ -3,7 +3,7 @@ extends Node2D
 signal tower_destroyed
 
 const TOWER_SCENE = preload("res://Towers/tower.tscn")
-const MAX_TOWERS = 40
+const MAX_TOWERS = 15
 
 func _ready():
 	for n in MAX_TOWERS:

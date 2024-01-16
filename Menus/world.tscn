@@ -352,7 +352,6 @@ script = ExtResource("4_7n0ch")
 script = ExtResource("5_p3r72")
 
 [node name="SpawnTimer" type="Timer" parent="Enemies"]
-wait_time = 2.0
 autostart = true
 
 [node name="Collectibles" type="Node2D" parent="."]

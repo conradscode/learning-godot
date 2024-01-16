@@ -12,7 +12,7 @@ func _ready():
 func _on_cooldown_timer_timeout():
 	cooldown_seconds -= 1
 	if (cooldown_seconds <= 0):
-		get_tree().change_scene_to_file(\"res://main.tscn\")
+		get_tree().change_scene_to_file(\"res://Menus/main.tscn\")
 		queue_free()
 	update_label()
 	

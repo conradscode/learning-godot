@@ -9,11 +9,10 @@ var chase_player = false
 var player
 var animation
 
-
 func _ready():
 	set_random_position()
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if (chase_player):
 		player = get_node(PLAYER_PATH)
 		var enemy_direction = (player.position - self.position).normalized()

@@ -7,7 +7,6 @@ var player_current_health = PLAYER_MAX_HEALTH
 var towers_destroyed = 0
 var total_towers
 
-
 func _ready():
 	set_player_statistics()	
 		
